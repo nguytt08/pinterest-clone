@@ -13,14 +13,32 @@ class App extends Component {
 
   // https://images.pexels.com/photos/1120162/pexels-photo-1120162.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940
 
-  componentDidMount() {
+  getLinks() {
     axios.get(`http://localhost:4000/links`)
     .then(res => {
-      console.log('component did mount: ' + JSON.stringify(res.data));
-      console.log('type: ' + typeof(res.data));
+      console.log('links: ' + res.data);
       const links = res.data;
       this.setState( {links: links} );
     })
+  }
+
+  componentDidMount() {
+    axios.get(`http://localhost:4000/links`)
+    .then(res => {
+      console.log('links: ' + res.data);
+      const links = res.data;
+      this.setState( {links: links} );
+    })
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+
+    if (prevState.links !== this.state.links) {
+      // this.getLinks();
+      console.log('prev state: ' + JSON.stringify(prevState.links));
+      console.log('this state: ' + JSON.stringify(this.state.links));
+      this.setState({ links: this.state.links})
+    }
   }
 
   handleInputChange = (e) => {
@@ -29,20 +47,19 @@ class App extends Component {
 
 
   handleSubmit = (link) => {
-    console.log("handle submit link: " + link);
-    // this.setState({
-    //   url: link
-    // })
+    const newLink = {
+      link: this.state.inputLink};;
+    console.log(newLink);
 
-    // this.state.links.map(link => {
-    //   console.log('link map: ' + link);
-    // })
+    axios.post(`http://localhost:4000/addlink`, {newLink})
+      .then(res => {
+        console.log(res);
+      }).then(() => {
+        this.getLinks();
+      })
 
-    // this.state.links
-    console.log("current state: " + (this.state.links[0].url));
-
-    // this.state.links.map(link => console.log('linksss: ' + link));
-    // console.log('type of: ' + this.state.links[0]);
+      this.setState({inputLink: ''});
+      // this.getLinks();
   }
 
   render() {
@@ -53,9 +70,8 @@ class App extends Component {
           <input type="text" size="70" value={this.state.inputLink} onChange={this.handleInputChange} />
           <input type="submit" value="Submit" onClick={this.handleSubmit}/>
         </div>
-        <PictureCard link={this.state.inputLink}/>
         {this.state.links.map(link => {
-          return <PictureCard link={link.url} />
+          return <PictureCard link={link.url} key={link.link_id}/>
         })
       }
       </div>
