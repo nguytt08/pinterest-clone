@@ -1,7 +1,7 @@
 const host = 'localhost'
-const user = 'insert db username here'
-const password = 'insert db password here'
-const database = 'insert database name here'
+const user = 'tin'
+const password = 'hondacbr'
+const database = 'pinterest_clone'
 
 module.exports = {
   host: host,
