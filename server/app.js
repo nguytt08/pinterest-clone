@@ -32,6 +32,7 @@ sendLinks();
 const insertURL = (links) => {
   console.log('insert url links: ' + links);
   connection.query(`INSERT INTO urlLinks (url, user_id) VALUES ('${links}', '1')`, function(err, result) {
+    console.log('error: ' + err);
     if (err) throw err
       console.log("Record inserted");
   }

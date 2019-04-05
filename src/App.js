@@ -35,13 +35,11 @@ class App extends Component {
   componentDidUpdate(prevProps, prevState) {
 
     if (prevState.links !== this.state.links) {
-      // this.getLinks();
       console.log('prevstate not equal to this.state');
       console.log('prev state: ' + JSON.stringify(prevState.links));
       console.log('this state: ' + JSON.stringify(this.state.links));
 
       // this.setState({ links: this.state.linksn});
-      // this.getLinks();
     }
       console.log(prevState.links === this.state.links);
   }
@@ -75,9 +73,9 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1>Pinterest</h1>
+        <h1>Photos Pinterest</h1>
         <div>
-          <TextField id="standard-full-width" fullWidth margin="normal" style={{margin: 8}} label="Link" value={this.state.inputLink} onChange={this.handleInputChange} />
+          <TextField id="standard-full-width" fullWidth margin="normal" style={{margin: 8}} label="Link" value={this.state.inputLink} onChange={this.handleInputChange}/>
           <Button variant="contained" onClick={this.handleSubmit} >Submit Link </Button>
         </div>
         <PhotoGrid links={this.state.links} />
@@ -85,12 +83,6 @@ class App extends Component {
     );
   }
 }
-          // <LinkForm />
-          // 
-          // 
-      //     //         {this.state.links.map(link => {
-      //     return <PictureCard link={link.url} key={link.link_id}/>
-      //   })
-      // }
+
 
 export default App;
