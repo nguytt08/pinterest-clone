@@ -2,13 +2,13 @@ import React from 'react';
 import './PictureCard.css';
 import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
-import deletebutton from '../assets/twotone-delete-24px.svg';
+import deletebutton from '../assets/outline-delete_forever-24px.svg';
 
 
 const DeleteButton = () => {
 
   return (
-    <div>
+    <div className="delete">
       <IconButton aria-label="Delete">
         <img src = {deletebutton} alt = "deletebutton" />
       </IconButton>
@@ -20,9 +20,15 @@ const DeleteButton = () => {
 class PictureCard extends React.Component {
   state = {hover: false}
 
-handleHover = () => {
-  console.log('hovering');
-  // this.setState({hover: !this.state.hover})
+handleMouseEnter = () => {
+  console.log('mouse enter');
+  this.setState({hover: true})
+  console.log(this.state.hover);
+}
+
+handleMouseLeave = () => {
+  console.log('mouse leave');
+  this.setState({hover: false})
   console.log(this.state.hover);
 }
 
@@ -30,20 +36,22 @@ handleHover = () => {
 
 render() {
    return (
-    <div>
-    {this.state.hover ? <DeleteButton/> : null}
-    <Tooltip title={this.props.alt || 'Alt text'}>
+    <div className="image"
+    onMouseEnter={this.handleMouseEnter.bind(this)}
+    onMouseLeave={this.handleMouseLeave.bind(this)}>
+    {this.state.hover ? <DeleteButton /> : null}
     <img className="picture"
     src={this.props.link}
     alt="Librarian"
-    onMouseOver={this.handleHover}/>
-    </Tooltip>
+/>
     </div>
 )}
 
 }
 
+/*    <Tooltip title={this.props.alt || 'Alt text'}>
+    </Tooltip>
 
-
+*/
 
 export default PictureCard;
