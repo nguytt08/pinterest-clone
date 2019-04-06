@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import PictureCard from './components/PictureCard.js';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import FormGroup from '@material-ui/core/FormGroup';
 import PhotoGrid from './components/PhotoGrid.js';
 
 import axios from 'axios';

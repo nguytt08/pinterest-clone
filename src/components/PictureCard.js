@@ -2,15 +2,20 @@ import React from 'react';
 import './PictureCard.css';
 import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
-import deletebutton from '../assets/outline-delete_forever-24px.svg';
+import deleteButton from '../assets/outline-delete_forever-24px.svg';
 
 
-const DeleteButton = () => {
+const handleDelete = () => {
+  console.log('delete pressed')
+  //need to write axios delete request here and use the props index to delete from database then rerender
+}
+
+const DeleteButton = (props) => {
 
   return (
     <div className="delete">
-      <IconButton aria-label="Delete">
-        <img src = {deletebutton} alt = "deletebutton" />
+      <IconButton aria-label="Delete" onClick={handleDelete.bind(this)}>
+        <img src = {deleteButton} alt = "deletebutton" />
       </IconButton>
     </div>
   )
@@ -39,10 +44,11 @@ render() {
     <div className="image"
     onMouseEnter={this.handleMouseEnter.bind(this)}
     onMouseLeave={this.handleMouseLeave.bind(this)}>
-    {this.state.hover ? <DeleteButton /> : null}
+    {this.state.hover ? <DeleteButton link_id={this.props.link_id}/> : null}
     <img className="picture"
     src={this.props.link}
-    alt="Librarian"
+    alt={this.props.alt}
+    link_id={this.props.link_id}
 />
     </div>
 )}

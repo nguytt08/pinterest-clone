@@ -15,7 +15,7 @@ const PhotoGrid = (props) => {
     appeared = {helix.appeared} enter = {helix.enter} entered = {helix.entered} leaved = {helix.leaved} duration = {1000}
     easings = {easings.backOut}>
       {props.links.map(link => {
-        return <PictureCard link={link.url} key={link.link_id} alt='pics'/>
+        return <PictureCard link={link.url} key={link.link_id} link_id={link.link_id} alt='pics'/>
       })}
     </StackGrid>
   )
