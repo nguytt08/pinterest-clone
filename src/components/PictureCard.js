@@ -3,18 +3,29 @@ import './PictureCard.css';
 import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
 import deleteButton from '../assets/outline-delete_forever-24px.svg';
+import axios from 'axios';
 
 
-const handleDelete = () => {
-  console.log('delete pressed')
+const handleDelete = (link_id) => {
+  console.log('delete pressed');
   //need to write axios delete request here and use the props index to delete from database then rerender
+  //
+    console.log('app.js delete pressed ' + {link_id: link_id});
+        axios.delete(`http://localhost:4000/deletelink`, {data: {link_id: link_id}})
+      .then(res => {
+        console.log('response: ' + JSON.stringify(res));
+      }).then(() => {
+        // this.getLinks();
+        // this.setState({inputLink: ''});
+      })
 }
 
 const DeleteButton = (props) => {
+  console.log(props);
 
   return (
     <div className="delete">
-      <IconButton aria-label="Delete" onClick={handleDelete.bind(this)}>
+      <IconButton aria-label="Delete" onClick={() => handleDelete(props.link_id)}>
         <img src = {deleteButton} alt = "deletebutton" />
       </IconButton>
     </div>
@@ -26,15 +37,11 @@ class PictureCard extends React.Component {
   state = {hover: false}
 
 handleMouseEnter = () => {
-  console.log('mouse enter');
   this.setState({hover: true})
-  console.log(this.state.hover);
 }
 
 handleMouseLeave = () => {
-  console.log('mouse leave');
   this.setState({hover: false})
-  console.log(this.state.hover);
 }
 
 
@@ -44,7 +51,7 @@ render() {
     <div className="image"
     onMouseEnter={this.handleMouseEnter.bind(this)}
     onMouseLeave={this.handleMouseLeave.bind(this)}>
-    {this.state.hover ? <DeleteButton link_id={this.props.link_id}/> : null}
+    {this.state.hover ? <DeleteButton link_id={this.props.link_id} /> : null}
     <img className="picture"
     src={this.props.link}
     alt={this.props.alt}

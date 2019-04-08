@@ -17,7 +17,7 @@ class App extends Component {
   getLinks() {
     axios.get(`http://localhost:4000/links`)
     .then(res => {
-      console.log('links: ' + res.data);
+      // console.log('links: ' + res.data);
       const links = res.data.reverse();
       if(this.state.links !== links) {
       this.setState( {links: links} );
@@ -32,14 +32,14 @@ class App extends Component {
 
   componentDidUpdate(prevProps, prevState) {
 
-    if (prevState.links !== this.state.links) {
-      console.log('prevstate not equal to this.state');
-      console.log('prev state: ' + JSON.stringify(prevState.links));
-      console.log('this state: ' + JSON.stringify(this.state.links));
+    // if (prevState.links !== this.state.links) {
+    //   console.log('prevstate not equal to this.state');
+    //   console.log('prev state: ' + JSON.stringify(prevState.links));
+    //   console.log('this state: ' + JSON.stringify(this.state.links));
 
-      // this.setState({ links: this.state.linksn});
-    }
-      console.log(prevState.links === this.state.links);
+    //   // this.setState({ links: this.state.linksn});
+    // }
+    //   console.log(prevState.links === this.state.links);
   }
 
   handleInputChange = (e) => {
@@ -49,19 +49,17 @@ class App extends Component {
 
   handleSubmit = (link) => {
     const newLink = {
-      link: this.state.inputLink};;
-    console.log(newLink);
+      link: this.state.inputLink};
 
     axios.post(`http://localhost:4000/addlink`, {newLink})
       .then(res => {
-        console.log('response: ' + res);
+        // console.log('response: ' + res);
       }).then(() => {
         this.getLinks();
         this.setState({inputLink: ''});
       })
-
-      // this.getLinks();
   }
+
 
   render() {
 
