@@ -7,22 +7,20 @@ import axios from 'axios';
 
 
 const handleDelete = (link_id) => {
-  console.log('delete pressed');
   //need to write axios delete request here and use the props index to delete from database then rerender
   //
-    console.log('app.js delete pressed ' + {link_id: link_id});
+    console.log('picturecard delete pressed ' + {link_id: link_id});
         axios.delete(`http://localhost:4000/deletelink`, {data: {link_id: link_id}})
       .then(res => {
         console.log('response: ' + JSON.stringify(res));
-      }).then(() => {
-        // this.getLinks();
-        // this.setState({inputLink: ''});
       })
 }
 
+/*
+onClick function sends in the link_id as an argument to the handleDelete function for the IconButton's onClick.
+ */
 const DeleteButton = (props) => {
-  console.log(props);
-
+  console.log('link_id ' + props.link_id)
   return (
     <div className="delete">
       <IconButton aria-label="Delete" onClick={() => handleDelete(props.link_id)}>

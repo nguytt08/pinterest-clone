@@ -7,6 +7,7 @@ import PhotoGrid from './components/PhotoGrid.js';
 import axios from 'axios';
 
 class App extends Component {
+  //erase inputlinks pre-populated link to empty string
   state = {
     inputLink: 'https://media.istockphoto.com/photos/student-searching-books-picture-id623200866',
     links: null
@@ -69,7 +70,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1>Photos Pinterest</h1>
+        <h1>Photo Pinterest</h1>
         <div>
           <TextField id="standard-full-width" fullWidth margin="normal" style={{margin: 8}} label="Link" value={this.state.inputLink} onChange={this.handleInputChange}/>
           <Button variant="contained" onClick={this.handleSubmit} >Submit Link </Button>
