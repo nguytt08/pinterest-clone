@@ -12,8 +12,9 @@ const handleDelete = (link_id) => {
     console.log('picturecard delete pressed ' + {link_id: link_id});
         axios.delete(`http://localhost:4000/deletelink`, {data: {link_id: link_id}})
       .then(res => {
-        console.log('response: ' + JSON.stringify(res));
+        // console.log('response: ' + JSON.stringify(res));
       })
+
 }
 
 /*

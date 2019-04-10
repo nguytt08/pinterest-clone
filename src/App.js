@@ -12,10 +12,12 @@ class App extends Component {
     inputLink: 'https://media.istockphoto.com/photos/student-searching-books-picture-id623200866',
     links: null
   }
+  // var self = this;
 
   // https://images.pexels.com/photos/1120162/pexels-photo-1120162.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940
 
   getLinks() {
+    console.log('gettin links');
     axios.get(`http://localhost:4000/links`)
     .then(res => {
       // console.log('links: ' + res.data);
