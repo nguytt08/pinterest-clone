@@ -35,6 +35,12 @@ class App extends Component {
 
   componentDidUpdate(prevProps, prevState) {
 
+    /*Sometimes the photos render after posting a link, sometimes it doesn't.
+    At this point, unsure why beause having prevstate set to current state doesn't work.
+    I think the promise for the handleSubmit function that calls getLinks() fires immediately sometimes before the state updates
+    and sometimes it doesn't which is why new photos only sometimes re-render immediately after a submitted link.
+    */
+
     // if (prevState.links !== this.state.links) {
     //   console.log('prevstate not equal to this.state');
     //   console.log('prev state: ' + JSON.stringify(prevState.links));
