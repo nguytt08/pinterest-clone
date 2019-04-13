@@ -3,42 +3,51 @@
 module.exports = {
 
   development: {
-    client: 'sqlite3',
+    client: 'mysql',
     connection: {
-      filename: './dev.sqlite3'
+      host: '127.0.0.1',
+      user: 'user_HERE!',
+      password: 'password_HERE!',
+      database: 'pinterest_clone',
+      charset: 'utf8'
+    },
+    migrations: {
+      directory: __dirname + '/knex/migrations',
+    },
+    seeds: {
+      directory: __dirname + '/knex/seeds'
     }
   },
 
   staging: {
-    client: 'postgresql',
+    client: 'mysql',
     connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+      host: '127.0.0.1',
+      user: 'user_HERE!',
+      password: 'password_HERE!',
+      database: 'pinterest_clone'
     },
     pool: {
       min: 2,
       max: 10
     },
     migrations: {
-      tableName: 'knex_migrations'
+      tableName: '/knex/knex_migrations'
     }
   },
 
   production: {
-    client: 'postgresql',
-    connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+      host: '127.0.0.1',
+      user: 'user_HERE!',
+      password: 'password_HERE!',
+      database: 'pinterest_clone'
     },
     pool: {
       min: 2,
       max: 10
     },
     migrations: {
-      tableName: 'knex_migrations'
+      tableName: '/knex/knex_migrations'
     }
   }
 
-};

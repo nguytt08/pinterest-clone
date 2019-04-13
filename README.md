@@ -6,6 +6,19 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `knex migrate:latest`
+
+After creating a database and editing knex.js and db.js files with correct database information, run this command to
+create the schema for your tables.
+
+### `knex seed:run`
+
+Run this command to make fake data to test your database and make sure it works. Or add your own links manually to the database!
+
+### `knex migrate:rollback`
+
+Run this if you need to reset your tables from your database.
+
 ### `npm start`
 
 Runs the app in the development mode.<br>
