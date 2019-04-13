@@ -60,7 +60,7 @@ class App extends Component {
     const newLink = {
       link: this.state.inputLink};
 
-    axios.post(`http://localhost:4000/addlink`, {newLink})
+    axios.post(`http://localhost:4000/addlink`, newLink)
       .then(res => {
         // console.log('response: ' + res);
       }).then(() => {
